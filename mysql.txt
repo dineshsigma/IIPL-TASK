@@ -1,0 +1,83 @@
+1.create table producttable(id int not null auto_increment,product varchar(20),primary key(id));
+insert into producttable(id,product) values(1,'colgate');
+insert into producttable(id,product) values(2,'lux');
+insert into producttable(id,product) values(3,'lux');
+
+select * from producttable;
+
++----+---------+
+| id | product |
++----+---------+
+|  1 | colgate |
+|  2 | brush   |
+|  3 | lux     |
++----+---------+
+
+
+2.usertable
+
+create table usertable(user_id int notnull auto_increment,username varchar(20),password varchar(500),telephone varchar(20),accessLevel boolean,primary key(user_id));
+alter table usertable modify user_id varchar(20);
+
+insert into usertable(user_id,username,password,telephone,accesslevel) values(1,'dinesh','1234','6305793367',0);
+insert into usertable(user_id,username,password,telephone,accesslevel) values(2,'dinesh','1234','6305793367',0);
+select * from usertable;
+
++---------+----------+----------+------------+-------------+
+| user_id | username | password | telephone  | accessLevel |
++---------+----------+----------+------------+-------------+
+| 1       | dinesh   | 1234     | 6305793367 |           0 |
+| 2       | dinesh   | 1234     | 6305793367 |           0 |
++---------+----------+----------+------------+-------------+
+insert into usertable(user_id,username,password,telephone,accesslevel) values(3,'auction','$2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve','6305793367',1);
+
++---------+----------+--------------------------------------------------------------+------------+-------------+
+| user_id | username | password                                                     | telephone  | accessLevel |
++---------+----------+--------------------------------------------------------------+------------+-------------+
+| 1       | dinesh   | 1234                                                         | 6305793367 |           0 |
+| 2       | dinesh   | 1234                                                         | 6305793367 |           0 |
+| 3       | auction  | $2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve | 6305793367 |           1 |
++---------+----------+--------------------------------------------------------------+------------+-------------+
+
+
+3.category table
+create table categorytable(cat_id int not null auto_increment,category varchar(20),primary key(cat_id));
+
+alter table categorytable modify cat_id varchar(20);
+
+insert into categorytable(cat_id,category)values(1,'icecreams');
+insert into categorytable(cat_id,category)values(2,'closeup');
+
+select * from categorytable;
++--------+-----------+
+| cat_id | category  |
++--------+-----------+
+| 1      | icecreams |
+| 2      | closeup   |
++--------+-----------+
+
+
+4.projecttable
+
+create table projecttable(pro_id int not null auto_increment,user_id varchar(20),cat_id varchar(20),primary key(pro_id),foreign key(user_id) references usertable(user_id),foreign key(cat_id) references categorytable(cat_id)on update cascade);
+
+insert into projecttable(pro_id,user_id,cat_id) values(1,'1','1');
+insert into projecttable(pro_id,user_id,cat_id) values(2,'2','2');
+insert into projecttable(pro_id,user_id,cat_id) values(3,'1','2');
+insert into projecttable(pro_id,user_id,cat_id) values(4,'2','1');
+
+
+ select * from projecttable;
++--------+---------+--------+
+| pro_id | user_id | cat_id |
++--------+---------+--------+
+|      1 | 1       | 1      |
+|      2 | 2       | 2      |
+|      3 | 1       | 2      |
+|      4 | 2       | 1      |
++--------+---------+--------+
+
+
+
+
+
