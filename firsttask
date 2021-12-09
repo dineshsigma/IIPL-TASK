@@ -1,1 +1,26 @@
 
+
+//task 1:
+
+ select *  from producttable  join  usertable left join categorytable  on categorytable.cat_id=usertable.user_id ;
++----+---------+---------+----------+--------------------------------------------------------------+------------+-------------+--------+-----------+
+| id | product | user_id | username | password                                                     | telephone  | accessLevel | cat_id | category  |
++----+---------+---------+----------+--------------------------------------------------------------+------------+-------------+--------+-----------+
+|  3 | lux     | 1       | dinesh   | 1234                                                         | 6305793367 |           0 | 1      | icecreams |
+|  2 | brush   | 1       | dinesh   | 1234                                                         | 6305793367 |           0 | 1      | icecreams |
+|  1 | colgate | 1       | dinesh   | 1234                                                         | 6305793367 |           0 | 1      | icecreams |
+|  3 | lux     | 2       | dinesh   | 1234                                                         | 6305793367 |           0 | 2      | closeup   |
+|  2 | brush   | 2       | dinesh   | 1234                                                         | 6305793367 |           0 | 2      | closeup   |
+|  1 | colgate | 2       | dinesh   | 1234                                                         | 6305793367 |           0 | 2      | closeup   |
+|  3 | lux     | 3       | auction  | $2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve | 6305793367 |           1 | NULL   | NULL      |
+|  2 | brush   | 3       | auction  | $2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve | 6305793367 |           1 | NULL   | NULL      |
+|  1 | colgate | 3       | auction  | $2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve | 6305793367 |           1 | NULL   | NULL      |
++----+---------+---------+----------+--------------------------------------------------------------+------------+-------------+--------+-----------+
+
+select * from usertable order by username asc;
++---------+----------+--------------------------------------------------------------+------------+-------------+
+| user_id | username | password                                                     | telephone  | accessLevel |
++---------+----------+--------------------------------------------------------------+------------+-------------+
+| 3       | auction  | $2b$10$Tnqo4mtymBatx9k7ikV4Pe/FcsI5f8UAg22f8GbVPE.2KCCxYM0Ve | 6305793367 |           1 |
+| 1       | dinesh   | 1234                                                         | 6305793367 |           0 |
+| 2       | dinesh   | 1234                                                         | 6305793367 |           0 |
